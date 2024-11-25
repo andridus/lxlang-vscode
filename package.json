@@ -1,0 +1,27 @@
+{
+  "name": "lxlang",
+  "displayName": "lxlang",
+  "description": "Language Highlight for lxlang",
+  "version": "0.0.1",
+  "publisher": "andridus",
+  "repository": "https://github.com/andridus/lxlang-vscode",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "lxlang",
+      "aliases": ["Lx", "lxlang"],
+      "extensions": [".lx",".lxs"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "lxlang",
+      "scopeName": "source.lx",
+      "path": "./syntaxes/lx.json"
+    }]
+  }
+}
