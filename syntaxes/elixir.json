@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "LxLang",
-  "scopeName": "source.lx",
+  "name": "Elixir",
+  "scopeName": "source.ex",
   "patterns": [
       {
-          "include": "#interpolated_lx"
+          "include": "#interpolated_ex"
       },
       {
           "include": "#constant"
@@ -51,33 +51,33 @@
           "patterns": [
               {
                   "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
-                  "name": "constant.character.escape.lx"
+                  "name": "constant.character.escape.ex"
               }
           ]
       },
-      "interpolated_lx": {
+      "interpolated_ex": {
           "patterns": [
               {
                   "captures": {
                       "0": {
-                          "name": "punctuation.section.embedded.lx"
+                          "name": "punctuation.section.embedded.ex"
                       },
                       "1": {
-                          "name": "source.lx.embedded.source.empty"
+                          "name": "source.ex.embedded.source.empty"
                       }
                   },
                   "match": "#\\{(\\})",
-                  "name": "source.lx.embedded.source"
+                  "name": "source.ex.embedded.source"
               },
               {
                   "begin": "#\\{",
                   "captures": {
                       "0": {
-                          "name": "punctuation.section.embedded.lx"
+                          "name": "punctuation.section.embedded.ex"
                       }
                   },
                   "end": "\\}",
-                  "name": "source.lx.embedded.source",
+                  "name": "source.ex.embedded.source",
                   "patterns": []
               }
           ]
@@ -87,7 +87,7 @@
           "end": "\\]",
           "captures": {
               "0": {
-                  "name": "punctuation.section.scope.lx"
+                  "name": "punctuation.section.scope.ex"
               }
           },
           "patterns": [
@@ -101,7 +101,7 @@
           "end": "\\}",
           "captures": {
               "0": {
-                  "name": "punctuation.section.scope.lx"
+                  "name": "punctuation.section.scope.ex"
               }
           },
           "patterns": [
@@ -117,7 +117,7 @@
                   "end": "\\}",
                   "captures": {
                       "0": {
-                          "name": "punctuation.section.scope.lx"
+                          "name": "punctuation.section.scope.ex"
                       }
                   },
                   "patterns": [
@@ -136,7 +136,7 @@
           "end": "\\>",
           "captures": {
               "0": {
-                  "name": "punctuation.section.scope.lx"
+                  "name": "punctuation.section.scope.ex"
               }
           },
           "patterns": [
@@ -146,33 +146,33 @@
           ]
       },
       "regex_sub": {
-          "name": "string.interpolated.regexp.lx",
+          "name": "string.interpolated.regexp.ex",
           "patterns": [
               {
-                  "include": "#interoplated_lx"
+                  "include": "#interoplated_ex"
               },
               {
                   "include": "#escaped_char"
               },
               {
-                  "name": "string.regexp.arbitrary-repitition.lx",
+                  "name": "string.regexp.arbitrary-repitition.ex",
                   "match": "(\\{)\\d+(,\\d+)?(\\})",
                   "captures": {
                       "1": {
-                          "name": "punctuation.definition.arbitrary-repitition.lx"
+                          "name": "punctuation.definition.arbitrary-repitition.ex"
                       },
                       "3": {
-                          "name": "punctuation.definition.arbitrary-repitition.lx"
+                          "name": "punctuation.definition.arbitrary-repitition.ex"
                       }
                   }
               },
               {
-                  "name": "string.regexp.character-class.lx",
+                  "name": "string.regexp.character-class.ex",
                   "begin": "\\[(?:\\^?\\])?",
                   "end": "\\]",
                   "captures": {
                       "0": {
-                          "name": "punctuation.definition.character-class.lx"
+                          "name": "punctuation.definition.character-class.ex"
                       }
                   },
                   "patterns": [
@@ -182,12 +182,12 @@
                   ]
               },
               {
-                  "name": "string.regexp.group.lx",
+                  "name": "string.regexp.group.ex",
                   "begin": "\\(",
                   "end": "\\)",
                   "captures": {
                       "0": {
-                          "name": "punctuation.definition.group.lx"
+                          "name": "punctuation.definition.group.ex"
                       }
                   },
                   "patterns": [
@@ -197,18 +197,18 @@
                   ]
               },
               {
-                  "name": "comment.line.number-sign.lx",
+                  "name": "comment.line.number-sign.ex",
                   "comment": "We are restrictive in what we allow to go after the comment character to avoid false positives, since the availability of comments depend on regexp flags.",
                   "begin": "(?<=^|\\s)(#)\\s(?=[[a-zA-Z0-9,. \\t?!-][^\\x{00}-\\x{7F}]]*$)",
                   "end": "$\\n?",
                   "beginCaptures": {
                       "1": {
-                          "name": "punctuation.definition.comment.lx"
+                          "name": "punctuation.definition.comment.ex"
                       }
                   },
                   "endCaptures": {
                       "0": {
-                          "name": "punctuation.definition.comment.lx"
+                          "name": "punctuation.definition.comment.ex"
                       }
                   }
               }
@@ -218,12 +218,12 @@
           "patterns": [
               {
                   "comment": "@doc with interpolated heredocs",
-                  "name": "comment.documentation.heredoc.lx",
+                  "name": "comment.documentation.heredoc.ex",
                   "begin": "@(module|type)?doc (~s)?\"\"\"",
                   "end": "\\s*\"\"\"",
                   "patterns": [
                       {
-                          "include": "#interoplated_lx"
+                          "include": "#interoplated_ex"
                       },
                       {
                           "include": "#escaped_char"
@@ -232,12 +232,12 @@
               },
               {
                   "comment": "@doc with interpolated single quoted heredocs",
-                  "name": "comment.documentation.heredoc.lx",
+                  "name": "comment.documentation.heredoc.ex",
                   "begin": "@(module|type)?doc ~s'''",
                   "end": "\\s*'''",
                   "patterns": [
                       {
-                          "include": "#interoplated_lx"
+                          "include": "#interoplated_ex"
                       },
                       {
                           "include": "#escaped_char"
@@ -246,7 +246,7 @@
               },
               {
                   "comment": "@doc with heredocs is treated as documentation",
-                  "name": "comment.documentation.heredoc.lx",
+                  "name": "comment.documentation.heredoc.ex",
                   "begin": "@(module|type)?doc ~S\"\"\"",
                   "end": "\\s*\"\"\"",
                   "patterns": [
@@ -257,7 +257,7 @@
               },
               {
                   "comment": "@doc with heredocs is treated as documentation",
-                  "name": "comment.documentation.heredoc.lx",
+                  "name": "comment.documentation.heredoc.ex",
                   "begin": "@(module|type)?doc ~S'''",
                   "end": "\\s*'''",
                   "patterns": [
@@ -278,7 +278,7 @@
                   "name": "comment.documentation.string",
                   "patterns": [
                       {
-                          "include": "#interoplated_lx"
+                          "include": "#interoplated_ex"
                       },
                       {
                           "include": "#escaped_char"
@@ -286,65 +286,65 @@
                   ]
               },
               {
-                  "name": "comment.line.number-sign.lx",
+                  "name": "comment.line.number-sign.ex",
                   "begin": "#",
                   "end": "\\n",
                   "beginCaptures": {
                       "0": {
-                          "name": "punctuation.definition.comment.lx"
+                          "name": "punctuation.definition.comment.ex"
                       }
                   }
               },
               {
                   "match": "\\b_([\\w]+[?!]?)",
-                  "name": "comment.unused.lx"
+                  "name": "comment.unused.ex"
               },
               {
                   "match": "\\b_\\b",
-                  "name": "comment.wildcard.lx"
+                  "name": "comment.wildcard.ex"
               }
           ]
       },
       "constant": {
           "patterns": [
               {
-                  "name": "constant.language.lx",
+                  "name": "constant.language.ex",
                   "match": "\\b(nil|true|false)\\b(?![?!])"
               },
               {
-                  "name": "constant.numeric.lx",
+                  "name": "constant.numeric.ex",
                   "comment": "matches questionmark-letters.\n\nexamples (1st alternation = hex):\n?\\x1     ?\\x61\n\nexamples (2nd alternation = octal):\n?\\0      ?\\07     ?\\017\n\nexamples (3rd alternation = escaped):\n?\\n      ?\\b\n\nexamples (4th alternation = meta-ctrl):\n?\\C-a    ?\\M-a    ?\\C-\\M-\\C-\\M-a\n\nexamples (4th alternation = normal):\n?a       ?A       ?0\n?*       ?\"       ?(\n?.       ?#\n\n\nthe negative lookbehind prevents against matching\np(42.tainted?)",
                   "match": "(?<!\\w)\\?(\\\\(x\\h{1,2}(?!\\h)\\b|0[0-7]{0,2}(?![0-7])\\b|[^x0MC])|(\\\\[MC]-)+\\w|[^\\s\\\\])"
               },
               {
-                  "name": "constant.numeric.lx",
+                  "name": "constant.numeric.ex",
                   "match": "\\b(0[xX]\\h(?>_?\\h)*|\\d(?>_?\\d)*(\\.(?![^[:space:][:digit:]])(?>_?\\d)*)?([eE][-+]?\\d(?>_?\\d)*)?|0[bB][01]+)\\b"
               },
               {
                   "comment": "symbols",
                   "captures": {
                       "1": {
-                          "name": "punctuation.definition.constant.lx"
+                          "name": "punctuation.definition.constant.ex"
                       }
                   },
                   "match": "(?<!:)(:)(?>[a-zA-Z_][\\w@]*(?>[?!]|=(?![>=]))?|\\<\\>|===?|!==?|<<>>|<<<|>>>|~~~|::|<\\-|\\|>|=>|~|~=|=|/|\\\\\\\\|\\*\\*?|\\.\\.?\\.?|>=?|<=?|&&?&?|\\+\\+?|\\-\\-?|\\|\\|?\\|?|\\!|@|\\%?\\{\\}|%|\\[\\]|\\^(\\^\\^)?)",
-                  "name": "constant.other.symbol.lx"
+                  "name": "constant.other.symbol.ex"
               }
           ]
       },
       "entity": {
           "patterns": [
               {
-                  "name": "entity.name.function.lx",
+                  "name": "entity.name.function.ex",
                   "match": "[a-zA-Z0-9_?!]+(?=[(])"
               },
               {
                   "captures": {
                       "1": {
-                          "name": "keyword.control.module.lx"
+                          "name": "keyword.control.module.ex"
                       },
                       "2": {
-                          "name": "entity.name.type.module.lx"
+                          "name": "entity.name.type.module.ex"
                       }
                   },
                   "match": "^\\s*(defmodule)\\s+(([A-Z]\\w*\\s*(\\.)\\s*)*[A-Z]\\w*)"
@@ -358,15 +358,15 @@
                     "match": "\\b(defp?|defmacrop?)\\b\\s*([_$a-z][$\\w]*[!?]?)",
                     "captures": {
                         "1": {
-                            "name": "keyword.control.lx"
+                            "name": "keyword.control.ex"
                         },
                         "2": {
-                            "name": "entity.name.function.lx"
+                            "name": "entity.name.function.ex"
                         }
                     }
                 },
                 {
-                    "name": "keyword.control.lx",
+                    "name": "keyword.control.ex",
                     "match": "(?<!\\.)\\b(do|end|case|bc|lc|for|if|cond|with|unless|try|receive|fn|defmodule|defprotocol|defimpl|defrecordp?|defstruct|defdelegate|defcallback|defexception|defoverridable|defguardp?|exit|after|rescue|catch|else|raise|throw|quote|unquote|super|when|and|or|not|in)\\b(?![?!])"
                 },
                 {
@@ -374,25 +374,25 @@
                     "match": "\\s*(::)\\s*([%\\w{}:.,|]+(?:\\s*\\|\\s*[^\\s]+)*)",
                     "captures": {
                         "1": {
-                            "name": "constant.language.symbol.lx"
+                            "name": "constant.language.symbol.ex"
                         },
                         "2": {
-                            "name": "entity.name.type.lx"
+                            "name": "entity.name.type.ex"
                         }
                     }
                 },
                 {
-                  "name": "keyword.control.lx",
+                  "name": "keyword.control.ex",
                   "match": "(?<!\\.)\\b(test)\\b(?![?!])"
               },
               {
-                  "name": "keyword.other.special-method.lx",
+                  "name": "keyword.other.special-method.ex",
                   "match": "(?<!\\.)\\b(alias|require|import|use)\\b(?![?!])"
               },
 
               {
                   "comment": " as above, just doesn't need a 'end' and does a logic operation",
-                  "name": "keyword.operator.lx",
+                  "name": "keyword.operator.ex",
                   "match": "(?<!\\.)\\b(and|not|or|when|xor|in|inlist|inbits)\\b"
               }
           ]
@@ -401,40 +401,40 @@
           "patterns": [
               {
                   "match": "->",
-                  "name": "keyword.operator.arrow.lx"
+                  "name": "keyword.operator.arrow.ex"
               },
               {
                   "match": "=>",
-                  "name": "keyword.operator.big-arrow.lx"
+                  "name": "keyword.operator.big-arrow.ex"
               },
               {
                   "match": "\\|>",
-                  "name": "keyword.operator.pipe.lx"
+                  "name": "keyword.operator.pipe.ex"
               },
               {
                   "match": "=",
-                  "name": "keyword.operator.assignment.lx"
+                  "name": "keyword.operator.assignment.ex"
               },
               {
                   "match": "(\\|\\|\\||&&&|\\^\\^\\^|<<<|>>>|~~~)",
-                  "name": "keyword.operator.bitwise.lx"
+                  "name": "keyword.operator.bitwise.ex"
               },
               {
                   "comment": "matches: | ++ -- ** \\ <- <> << >> :: .. |> => -> <|> <~> <~ <<~ ~> ~>>",
                   "match": "\\+\\+|\\-\\-|\\*\\*|\\\\\\\\|\\<\\-|<\\<\\~|\\<\\>|\\<\\<|\\>\\>|\\:\\:|\\.\\.|\\|>|=>|<\\|\\>|<~>|->|~>>|~>|<~|(?<!\\|)\\|(?!\\|)",
-                  "name": "keyword.operator.other.lx"
+                  "name": "keyword.operator.other.ex"
               },
               {
                   "match": "===?|!==?|<=?|>=?|=~",
-                  "name": "keyword.operator.comparison.lx"
+                  "name": "keyword.operator.comparison.ex"
               },
               {
                   "match": "(?<=[ \\t])!+|\\bnot\\b|&&|\\band\\b|\\|\\||\\bor\\b|\\bxor\\b",
-                  "name": "keyword.operator.logical.lx"
+                  "name": "keyword.operator.logical.ex"
               },
               {
                   "match": "(\\*|\\+|\\-|/)",
-                  "name": "keyword.operator.arithmetic.lx"
+                  "name": "keyword.operator.arithmetic.ex"
               }
           ]
       },
@@ -442,27 +442,27 @@
           "patterns": [
               {
                   "match": "\\;",
-                  "name": "punctuation.separator.statement.lx"
+                  "name": "punctuation.separator.statement.ex"
               },
               {
                   "match": ",",
-                  "name": "punctuation.separator.object.lx"
+                  "name": "punctuation.separator.object.ex"
               },
               {
                   "match": "\\.",
-                  "name": "punctuation.separator.method.lx"
+                  "name": "punctuation.separator.method.ex"
               },
               {
                   "match": "\\{|\\}",
-                  "name": "punctuation.section.scope.lx"
+                  "name": "punctuation.section.scope.ex"
               },
               {
                   "match": "\\[\\]|\\[|\\]",
-                  "name": "punctuation.section.array.lx"
+                  "name": "punctuation.section.array.ex"
               },
               {
                   "match": ":",
-                  "name": "punctuation.separator.other.lx"
+                  "name": "punctuation.separator.other.ex"
               }
           ]
       },
@@ -470,41 +470,41 @@
           "patterns": [
               {
                   "comment": "triple quoted string (allows for interpolation)",
-                  "name": "string.quoted.triple.lx",
+                  "name": "string.quoted.triple.ex",
                   "begin": "\"\"\"",
                   "end": "\"\"\"",
                   "beginCaptures": {
                       "0": {
-                          "name": "punctuation.definition.string.begin.lx"
+                          "name": "punctuation.definition.string.begin.ex"
                       }
                   },
                   "endCaptures": {
                       "0": {
-                          "name": "punctuation.definition.string.end.lx"
+                          "name": "punctuation.definition.string.end.ex"
                       }
                   },
                   "patterns": [
                       {
                           "captures": {
                               "0": {
-                                  "name": "punctuation.section.embedded.lx"
+                                  "name": "punctuation.section.embedded.ex"
                               },
                               "1": {
-                                  "name": "source.lx.embedded.source.empty"
+                                  "name": "source.ex.embedded.source.empty"
                               }
                           },
                           "match": "#\\{(\\})",
-                          "name": "source.lx.embedded.source"
+                          "name": "source.ex.embedded.source"
                       },
                       {
                           "begin": "#\\{",
                           "captures": {
                               "0": {
-                                  "name": "punctuation.section.embedded.lx"
+                                  "name": "punctuation.section.embedded.ex"
                               }
                           },
                           "end": "\\}",
-                          "name": "source.lx.embedded.source",
+                          "name": "source.ex.embedded.source",
                           "patterns": [
                               {
                                   "include": "$self"
@@ -513,47 +513,47 @@
                       },
                       {
                           "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
-                          "name": "constant.character.escape.lx"
+                          "name": "constant.character.escape.ex"
                       }
                   ]
               },
               {
                   "comment": "single quoted string (allows for interpolation)",
-                  "name": "support.function.variable.quoted.single.lx",
+                  "name": "support.function.variable.quoted.single.ex",
                   "begin": "'",
                   "end": "'|\\n",
                   "beginCaptures": {
                       "0": {
-                          "name": "punctuation.definition.string.begin.lx"
+                          "name": "punctuation.definition.string.begin.ex"
                       }
                   },
                   "endCaptures": {
                       "0": {
-                          "name": "punctuation.definition.string.end.lx"
+                          "name": "punctuation.definition.string.end.ex"
                       }
                   },
                   "patterns": [
                       {
                           "captures": {
                               "0": {
-                                  "name": "punctuation.section.embedded.lx"
+                                  "name": "punctuation.section.embedded.ex"
                               },
                               "1": {
-                                  "name": "source.lx.embedded.source.empty"
+                                  "name": "source.ex.embedded.source.empty"
                               }
                           },
                           "match": "#\\{(\\})",
-                          "name": "source.lx.embedded.source"
+                          "name": "source.ex.embedded.source"
                       },
                       {
                           "begin": "#\\{",
                           "captures": {
                               "0": {
-                                  "name": "punctuation.section.embedded.lx"
+                                  "name": "punctuation.section.embedded.ex"
                               }
                           },
                           "end": "\\}",
-                          "name": "source.lx.embedded.source",
+                          "name": "source.ex.embedded.source",
                           "patterns": [
                               {
                                   "include": "$self"
@@ -562,37 +562,37 @@
                       },
                       {
                           "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
-                          "name": "constant.character.escape.lx"
+                          "name": "constant.character.escape.ex"
                       }
                   ]
               },
               {
                   "comment": "double quoted string (allows for interpolation)",
-                  "name": "string.quoted.double.lx",
+                  "name": "string.quoted.double.ex",
                   "begin": "\"",
                   "end": "\"|\\n",
                   "patterns": [
                       {
                           "captures": {
                               "0": {
-                                  "name": "punctuation.section.embedded.lx"
+                                  "name": "punctuation.section.embedded.ex"
                               },
                               "1": {
-                                  "name": "source.lx.embedded.source.empty"
+                                  "name": "source.ex.embedded.source.empty"
                               }
                           },
                           "match": "#\\{(\\})",
-                          "name": "source.lx.embedded.source"
+                          "name": "source.ex.embedded.source"
                       },
                       {
                           "begin": "#\\{",
                           "captures": {
                               "0": {
-                                  "name": "punctuation.section.embedded.lx"
+                                  "name": "punctuation.section.embedded.ex"
                               }
                           },
                           "end": "\\}",
-                          "name": "source.lx.embedded.source",
+                          "name": "source.ex.embedded.source",
                           "patterns": [
                               {
                                   "include": "$self"
@@ -601,7 +601,7 @@
                       },
                       {
                           "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
-                          "name": "constant.character.escape.lx"
+                          "name": "constant.character.escape.ex"
                       }
                   ]
               }
@@ -614,12 +614,12 @@
                   "end": "\\)",
                   "beginCaptures": {
                       "0": {
-                          "name": "punctuation.section.function.lx"
+                          "name": "punctuation.section.function.ex"
                       }
                   },
                   "endCaptures": {
                       "0": {
-                          "name": "punctuation.section.function.lx"
+                          "name": "punctuation.section.function.ex"
                       }
                   },
                   "patterns": [
@@ -627,53 +627,53 @@
                           "include": "$self"
                       },
                       {
-                          "name": "variable.other.param.lx",
+                          "name": "variable.other.param.ex",
                           "match": "[a-zA-Z]([a-zA-Z0-9_]+)?"
                       }
                   ]
               },
               {
-                  "name": "variable.other.access.lx",
+                  "name": "variable.other.access.ex",
                   "match": "([a-zA-Z_][a-zA-Z0-9_]+)(?=\\[)"
               },
               {
-                  "name": "variable.other.readwrite.module.lx",
+                  "name": "variable.other.readwrite.module.ex",
                   "match": "(@)[a-zA-Z_]\\w*",
                   "captures": {
                       "1": {
-                          "name": "punctuation.definition.variable.lx"
+                          "name": "punctuation.definition.variable.ex"
                       }
                   }
               },
               {
-                  "name": "variable.other.lx",
+                  "name": "variable.other.ex",
                   "match": "[a-zA-Z_]\\w+(?=:)"
               },
               {
-                  "name": "variable.other.lx",
+                  "name": "variable.other.ex",
                   "match": "^\\s+\\w+\\n(?=\\s)"
               },
               {
-                  "name": "variable.other.anonymous.lx",
+                  "name": "variable.other.anonymous.ex",
                   "match": "(&)\\d*",
                   "captures": {
                       "1": {
-                          "name": "punctuation.definition.variable.lx"
+                          "name": "punctuation.definition.variable.ex"
                       }
                   }
               },
               {
-                  "name": "variable.language.lx",
+                  "name": "variable.language.ex",
                   "match": "\\b(__(CALLER|ENV|MODULE|DIR)__)\\b(?![?!])"
               },
               {
                   "match": "(%)?\\b([A-Z]\\w+)\\b",
                   "captures": {
                       "1": {
-                          "name": "variable.other.constant.lx"
+                          "name": "variable.other.constant.ex"
                       },
                       "2": {
-                          "name": "variable.other.constant.lx"
+                          "name": "variable.other.constant.ex"
                       }
                   }
               }
